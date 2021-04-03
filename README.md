@@ -25,11 +25,27 @@ BenchmarkEncrypt/Hello                   1205151              1001 ns/op        
 - 11 allocs/op B/op is how many bytes were allocated per op.
 
 ```bash
-$ go test -bench=. -benchtime=20s -benchmem
-BenchmarkEncrypt/Hello                   1205151              1001 ns/op            1136 B/op         11 allocs/op
-BenchmarkEncrypt/Hello-2                 1292458               936.5 ns/op          1136 B/op         11 allocs/op
-BenchmarkEncrypt/Hello-4                 1281004               939.6 ns/op          1136 B/op         11 allocs/op
-BenchmarkEncrypt/Hello-8                 1309190               956.1 ns/op          1136 B/op         11 allocs/op
+$ go test -bench=. -benchtime=20s -benchmem -cpu 1,2,4,8
+
+BenchmarkEncrypt/TEXT_5_Charaters                1160916              1018 ns/op            1136 B/op         11 allocs/op
+BenchmarkEncrypt/TEXT_5_Charaters-2              1000000              1196 ns/op            1136 B/op         11 allocs/op
+BenchmarkEncrypt/TEXT_5_Charaters-4              1258911               918.8 ns/op          1136 B/op         11 allocs/op
+BenchmarkEncrypt/TEXT_5_Charaters-8              1148481               989.3 ns/op          1136 B/op         11 allocs/op
+BenchmarkEncrypt/JSON                             374270              3013 ns/op            3304 B/op         11 allocs/op
+BenchmarkEncrypt/JSON-2                           450818              2737 ns/op            3304 B/op         11 allocs/op
+BenchmarkEncrypt/JSON-4                           501794              2404 ns/op            3306 B/op         11 allocs/op
+BenchmarkEncrypt/JSON-8                           512911              2469 ns/op            3307 B/op         11 allocs/op
+BenchmarkDecrypt/TEXT_5_Charaters                1365834               930.0 ns/op          1074 B/op         10 allocs/op
+BenchmarkDecrypt/TEXT_5_Charaters-2              1427055               930.7 ns/op          1074 B/op         10 allocs/op
+BenchmarkDecrypt/TEXT_5_Charaters-4              1403770               894.6 ns/op          1074 B/op         10 allocs/op
+BenchmarkDecrypt/TEXT_5_Charaters-8              1308354              1006 ns/op            1075 B/op         10 allocs/op
+BenchmarkDecrypt/JSON                             431738              2852 ns/op            3288 B/op         10 allocs/op
+BenchmarkDecrypt/JSON-2                           496414              2528 ns/op            3288 B/op         10 allocs/op
+BenchmarkDecrypt/JSON-4                           493888              2464 ns/op            3288 B/op         10 allocs/op
+BenchmarkDecrypt/JSON-8                           515706              2498 ns/op            3289 B/op         10 allocs/op
+PASS
+ok      github.com/nattatorn-dev/go-encrypt     27.356s
+
 
 ```
 
